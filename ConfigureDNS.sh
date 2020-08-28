@@ -2,7 +2,7 @@
 
 sudo apt-get update 
 sudo apt-get install bind9 -y
-echo $'options {
+echo 'options {
         directory "/var/cache/bind";
         allow-query { any;};
         // Configure the IPs to listen on here.
