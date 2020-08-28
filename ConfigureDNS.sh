@@ -1,6 +1,7 @@
 #!/bin/bash
 
-sudo apt-get update && apt-get install bind9 -y
+sudo apt-get update 
+sudo apt-get install bind9 -y
 echo $'options { 
         directory "/var/bind"; 
         allow-query { 
