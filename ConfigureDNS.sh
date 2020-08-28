@@ -7,9 +7,11 @@ echo 'options {
         allow-query { any;};
         // Configure the IPs to listen on here.
         listen-on { any; };
+        listen-on-v6 { none; };
 };
 zone "core.windows.net" {
        type forward;
        forward only;
        forwarders { 168.63.129.16; };
 };' > /etc/bind/named.conf
+sudo systemctl restart bind9
