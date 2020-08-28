@@ -4,7 +4,8 @@ This project is very helpful in this scenario https://github.com/dmauser/Private
 
 In the scenario described in the link above, you should have a VNET an Azure Private DNS Zone linked with VNET.
 To create the custom DNS server and let you to resolve the Azure Private DNS Zone records from your on premises naming server infrastructure, you need to deploy the VM using the template contained in the repository.
-IMPORTANT: When you deploy the VM, you should provide to the template an already existing VNET and Subnet, pay attention the VM should be connected to the same VNET where Azure Private DNS Zone is linked, if you are going to deploy the VM in different VNET than be sure to add to Azure Private DNS Zone another link the the VM's VNET. This is very important otherwise the resolution will not work correctly.  
+
+**IMPORTANT**: When you deploy the VM, you should provide to the template an already existing VNET and Subnet, pay attention the VM should be connected to the same VNET where Azure Private DNS Zone is linked, if you are going to deploy the VM in different VNET than be sure to add to Azure Private DNS Zone another link the the VM's VNET. This is very important otherwise the resolution will not work correctly.  
 
 This is a simple project that deploy a Linux VM based on Ubuntu 16.04 distribution.
 The VM is automatically configured with Bind9 service and it listen on port 53 with private IP .
