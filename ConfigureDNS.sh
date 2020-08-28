@@ -7,7 +7,6 @@ echo 'options {
         allow-query { any;};
         // Configure the IPs to listen on here.
         listen-on { any; };
-        listen-on-v6 { none; };
 };
 zone "core.windows.net" {
        type forward;
