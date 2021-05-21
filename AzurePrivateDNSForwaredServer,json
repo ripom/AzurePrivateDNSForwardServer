@@ -31,7 +31,7 @@
     "variables": {
         "osDiskType": "StandardSSD_LRS",
         "vmsize": "Standard_B1s",
-        "loc": "westeurope",
+        "loc": "[resourceGroup().location]",
         "script": "https://raw.githubusercontent.com/ripom/AzurePrivateDNSForwardServer/master/ConfigureDNS.sh",
         "networkSecurityGroups_dns_server_nsg_name": "[concat(parameters('virtualMachines_dns_server_name'),'-nsg')]",
         "networkInterfaces_dns_server896_name": "[concat(parameters('virtualMachines_dns_server_name'),'-nic')]"
