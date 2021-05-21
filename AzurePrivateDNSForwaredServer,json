@@ -123,32 +123,25 @@
             }
         },
         {
-            "name": "microsoft.custom-script-linux-20200828104113",
-            "apiVersion": "2015-01-01",
-            "type": "Microsoft.Resources/deployments",
-            "properties": {
-                "mode": "incremental",
-                "templateLink": {
-                    "uri": "https://gallery.azure.com/artifact/20161101/microsoft.custom-script-linux-arm.2.0.56/Artifacts/MainTemplate.json"
-                },
-                "parameters": {
-                    "vmName": {
-                        "value": "[parameters('virtualMachines_dns_server_name')]"
-                    },
-                    "location": {
-                        "value": "[variables('loc')]"
-                    },
-                    "fileUris": {
-                        "value": "[array(variables('script'))]"
-                    },
-                    "commandToExecute": {
-                        "value": "sh ConfigureDNS.sh"
-                    }
+           "type": "Microsoft.Compute/virtualMachines/extensions",
+           "name": "[concat(parameters('virtualMachines_dns_server_name'),'/installcustomscript')]",
+           "apiVersion": "2015-05-01-preview",
+           "location": "[variables('loc')]",
+           "dependsOn": [
+             "[resourceId('Microsoft.Compute/virtualMachines/', parameters('virtualMachines_dns_server_name'))]"
+           ],
+           "properties": {
+                "publisher": "Microsoft.Azure.Extensions",
+                "type": "CustomScript",
+                "typeHandlerVersion": "2.0",
+                "autoUpgradeMinorVersion": true,
+                "settings": {
+                  "fileUris": [
+                    "[variables('script')]"
+                  ],
+                  "commandToExecute": "sh ConfigureDNS.sh"
                 }
-            },
-            "dependsOn": [
-                "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachines_dns_server_name'))]"
-            ]
+            }
         },
         {
             "type": "Microsoft.Network/networkInterfaces",
